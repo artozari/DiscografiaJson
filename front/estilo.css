@@ -1,0 +1,14 @@
+.tarjetas {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tarjeta {
+  border-radius: 20px;
+  width: 300px;
+  background: green;
+}
+.tarjeta img {
+  width: 300px;
+}

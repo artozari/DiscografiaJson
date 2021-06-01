@@ -13,11 +13,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/disco", (req, res) => {
-  let artista = req.query.artista;
-  let titulo = req.query.titulo;
-  let ano = req.query.ano;
-  console.log(discos.artista);
-  res.json(discos);
+  let respuesta = discos.discos;
+  if (req.query.artista) {
+    let artista = req.query.artista;
+    respuesta = respuesta.filter(function (elemento) {
+      return elemento.artista == artista;
+    });
+  }
+  if (req.query.titulo) {
+    let titulo = req.query.titulo;
+    respuesta = respuesta.filter(function (elemento) {
+      return elemento.titulo == titulo;
+    });
+  }
+  if (req.query.ano) {
+    let ano = req.query.ano;
+    respuesta = respuesta.filter(function (elemento) {
+      return elemento.lanzamiento == ano;
+    });
+  }
+  console.log(respuesta);
+  res.send(respuesta);
 });
 
 app.listen(port, function () {
